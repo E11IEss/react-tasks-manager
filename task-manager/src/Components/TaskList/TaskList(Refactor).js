@@ -4,20 +4,20 @@ import React from "react";
 // import stylesheet
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './TaskList.css';
-
+import { SortablePane, Pane } from 'react-sortable-pane';
 // import task component
 // import Task from '../Task/Task';
 import Task from '../Task/Task(Refactor)';
 
-export default function TaskList({ allTasks }) {    
-
+export default function TaskList({ allTasks }) {
+    const panes = allTasks.map((task, index) => <Pane resizable={{x: false, y:false, xy: false}} key={index} defaultSize={{ width: '100%', height: '100px' }}><div className="list-group-item"><Task task={task} /></div></Pane>);
     return (
         <div className="row h-100">
             <div className="col">
                 {/* <!-- Start of upper part: Title --> */}
                 <div className="row border-bottom title-row">
-                    <div className="col">
-                        <h3 className="mb-0 mt-2 title">
+                    <div className="col" >
+                        <h3 className="mb-0 mt-2 title" >
                             ALL TASKS
                         </h3>
                     </div>
@@ -38,21 +38,21 @@ export default function TaskList({ allTasks }) {
                         </div>
                     </div>
                     {/* <!-- Start of main column --> */}
-                    <div className="col mt-4 main-column">
+                    <div className="col mt-4 main-column" >
                         {/* <!-- Start of the list --> */}
-                        <ul className="list-group list-group-flush w-100">
-                            {/* <!-- Task Item(s) --> */}
-                            <div>
-                                <div>
-                                    {allTasks.map(task => <li className="list-group-item"><Task task={task} /></li>)}
-                                </div>
+                        {/* <ul className="list-group list-group-flush w-100"> */}
+                        {/* <!-- Task Item(s) --> */}
+                        {/* <div>
+                                {allTasks.map(task => <li className="list-group-item"><Task task={task} /></li>)}
                             </div>
-
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
-            </div>
-        </div>
+                        <div>
+                            <SortablePane direction="vertical" margin={100} defaultOrder={allTasks.map(ele => (allTasks.indexOf(ele).toString()))}>{panes}</SortablePane>
+                        </div>
+            </div >
+        </div >
     )
 }
 

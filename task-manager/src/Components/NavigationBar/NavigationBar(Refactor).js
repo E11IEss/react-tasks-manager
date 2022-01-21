@@ -26,6 +26,7 @@ export default function NavigationBar ({rightCol, handleToggle}) {
                                 <div className="col-3 my-auto">
                                     <a className="menu-item ms-5" href="#">Lists</a>
                                 </div>
+                                
 
                                 <div className="col-6 text-end">
                                     {/* <a className="text-center" id="addTask" href="#" onClick={this.openAdd}> */}
