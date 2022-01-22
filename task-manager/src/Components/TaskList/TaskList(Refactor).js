@@ -10,7 +10,7 @@ import { SortablePane, Pane } from 'react-sortable-pane';
 import Task from '../Task/Task(Refactor)';
 
 export default function TaskList({ allTasks }) {
-    const panes = allTasks.map((task, index) => <Pane resizable={{x: false, y:false, xy: false}} key={index} defaultSize={{ width: '100%', height: '100px' }}><div className="list-group-item"><Task task={task} /></div></Pane>);
+    const panes = allTasks.map((task, index) => <Pane key={index} defaultSize={{ width: '100%', height: '100px' }}><div className="list-group-item"><Task task={task} /></div></Pane>);
     return (
         <div className="row h-100">
             <div className="col">
